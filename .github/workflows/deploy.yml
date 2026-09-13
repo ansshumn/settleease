@@ -95,8 +95,8 @@ jobs:
           context: ./backend
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/settleease-backend:latest
-            ${{ secrets.DOCKER_USERNAME }}/settleease-backend:${{ github.sha }}
+            anshumnnx/settleease-backend:latest
+            anshumnnx/settleease-backend:${{ github.sha }}
 
       - name: Build & Push Frontend image
         uses: docker/build-push-action@v5
@@ -105,6 +105,6 @@ jobs:
           file: Dockerfile.frontend
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/settleease-frontend:latest
-            ${{ secrets.DOCKER_USERNAME }}/settleease-frontend:${{ github.sha }}
+            anshumnnx/settleease-frontend:latest
+            anshumnnx/settleease-frontend:${{ github.sha }}
 
