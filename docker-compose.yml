@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # 1. Django Backend + Gemini + ChromaDB
+  # ==========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: settleease-backend
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+    shm_size: '256mb'
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 1.1.1.1
+    volumes:
+      # Data persistence: Live sync with backend folder (includes db.sqlite3 and chroma_db)
+      - ./backend:/app
+    restart: unless-stopped
+
+  # ==========================================
+  # 2. React Frontend (Nginx Production Server)
+  # ==========================================
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: settleease-frontend
+    ports:
+      # Laptop ke port 5173 ko container ke port 80 se link kiya
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

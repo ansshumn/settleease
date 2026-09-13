@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" class="notranslate" translate="no">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SettleEase - Your AI Relocation Buddy for India</title>
+  <meta name="description"
+    content="Moving to a new city in India? SettleEase helps you find PG, tiffin services, local help, emergency contacts & language guides. New city? No tension!" />
+  <meta name="author" content="SettleEase" />
+  <meta name="keywords"
+    content="relocation India, PG finder, tiffin service, emergency contacts, language guide, Bangalore, moving help, accommodation" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+  <meta property="og:title" content="SettleEase - Your AI Relocation Buddy" />
+  <meta property="og:description"
+    content="New city? No tension! Find PG, tiffin, local services & more. Your AI-powered relocation assistant for India." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SettleEase" />
+  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+  <link rel="canonical" href="https://settleease.app" />
+  <meta name="google" content="notranslate" />
+  <script>
+    // Patch Node.prototype.removeChild & insertBefore to prevent browser extensions / Google Translate from crashing React DOM reconciliation
+    if (typeof Node !== 'undefined' && Node.prototype) {
+      const originalRemoveChild = Node.prototype.removeChild;
+      Node.prototype.removeChild = function (child) {
+        if (child && child.parentNode !== this) {
+          if (console) console.warn('Cannot remove child, parent mismatch avoided.');
+          return child;
+        }
+        return originalRemoveChild.apply(this, arguments);
+      };
+
+      const originalInsertBefore = Node.prototype.insertBefore;
+      Node.prototype.insertBefore = function (newNode, referenceNode) {
+        if (referenceNode && referenceNode.parentNode !== this) {
+          if (console) console.warn('Cannot insertBefore, parent mismatch avoided.');
+          return newNode;
+        }
+        return originalInsertBefore.apply(this, arguments);
+      };
+    }
+
+    // Ignore benign DOM reconciliation errors from destroying the UI
+    window.addEventListener('error', function (e) {
+      if (e.message && (e.message.includes('removeChild') || e.message.includes('insertBefore'))) {
+        e.preventDefault();
+        return true;
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="root">
+    <div style="font-family: sans-serif; text-align: center; padding: 20px;">
+      <h1>Loading SettleEase...</h1>
+      <p>If this message doesn't disappear, the app is not running correctly.</p>
+    </div>
+  </div>
+  <script type="module" src="/frontend/main.tsx"></script>
+</body>
+
+</html>
