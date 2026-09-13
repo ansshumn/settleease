@@ -39,6 +39,7 @@ jobs:
         run: python manage.py test
         env:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DEBUG: "True"
 
   # ─── Job 2: React Frontend Build ────────────────────────────────
